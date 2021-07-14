@@ -37,33 +37,25 @@ public class controlador {
 	@GetMapping("/buscar/{id}")
 	public String buscarEmpleatId(Model model, Integer id) {
 		
-		model.addAttribute("Empleats", empleatService.getEmpleat(id));
+		model.addAttribute("empleats", empleatService.getEmpleat(id));
 		
 		return "index";
 	}
 	
-	@GetMapping("/buscar/{nomOfici}")
-	public String buscarEmpleatOfici(Model model, String nomOfici) {
+	@GetMapping("/buscar/{ofici}")
+	public String buscarEmpleatOfici(Model model, String ofici) {
 		
-		model.addAttribute("Empleats", empleatService.getEmpleatOfici(nomOfici));
+		model.addAttribute("empleats", empleatService.getEmpleatOfici(ofici));
 		
 		return "index";
 	}
 	
-	@RequestMapping({"/editar", "/editar/{id}"})
-	public @ResponseBody String editarEmpleat(Model model, @PathVariable("id") Optional<Integer> id) {
+	@RequestMapping({"/editar/{id}"})
+	public String editarEmpleat(Model model, @PathVariable("id") Integer id) {
 		
-		System.out.println("RequestMapping: 'editarEmpleatPorId");
-		
-		if(id.isPresent()) {
-			Empleat empleat = empleatService.getEmpleat(id.get());
-			System.err.println("Modificando Empleat" + empleat.toString());
-			model.addAttribute("Empleat", empleat);
-		}else {
-			model.addAttribute("Empleat", new Empleat());
-		}
-		
-		return "redirect:/";
+		model.addAttribute("empleat", empleatService.getEmpleat(id));		
+		return "editar";
+
 	}
 	
 	@RequestMapping("/eliminar/{id}")
@@ -84,16 +76,23 @@ public class controlador {
 		return "crear";
 	}
 	
-	@RequestMapping(path = "/modificarEmpleat", method = RequestMethod.POST)
-	public String modificarEmpleat(String nom, String ofici) {
+	
+	
+	@RequestMapping(path = "/insertarEmpleat", method = RequestMethod.POST)
+	public String insertarEmpleat(String nom, String ofici) {
 		
-		System.out.println("RequestMapping: 'modificarEmpleat'");
-		System.err.println(nom);
-		System.err.println(ofici);
+
+		empleatService.inserta(nom,ofici);
 		
-		Empleat empleat = new Empleat(1,nom,Ofici.valueOf(ofici));
-		System.out.println(empleat);
-		empleatService.inserta(empleat);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(path = "/modificaEmpleat", method = RequestMethod.POST)
+	public String modificarEmpleat(String nom, String ofici , int id) {
+		
+		Empleat empleat = new Empleat(id,nom,Ofici.valueOf(ofici));
+
+		empleatService.modificar(empleat);
 		
 		return "redirect:/";
 	}

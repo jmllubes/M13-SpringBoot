@@ -44,7 +44,7 @@ public class Empleat {
 
 	@Override
 	public String toString() {
-		return "Empleat [id=" + id + ", nom=" + nom + ", ofici=" + ofici + "]";
+		return "Empleat [id=" + id + ", nom=" + nom + ", ofici=" + ofici.getNomOfici() + ", salari=" + ofici.getSalari() + "]";
 	}
 	
 	

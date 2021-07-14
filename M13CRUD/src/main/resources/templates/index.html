@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset = "ISO-8859-1">
+	
+	<meta charset="UTF-8">
 	<title>Llista d'empleats</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -13,7 +14,7 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<div class="container">
-			<a class="navbar-brand" href="/"> Spring HTTP Service sin Persistir</a>
+			<a class="navbar-brand" href="/"> Gestió Empleats</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -38,17 +39,17 @@
 				<i class="fas fa-user-plus ml-2"> Afegir empleat</i></a>
 			</p>				
 			
-			<form th:action="@{/buscarempleatPorofici}" method="get">
-					<input id="buscarempleatPorofici" type="text" name="ofici">
+			<form th:action="@{/buscar/{ofici}}" method="get">
+					<input id="buscarempleatofici" type="text" name="ofici">
 					<button type="submit">Buscar empleat per ofici</button>
 			</form>
 			<form th:action="@{/buscar/{id}}" method="get">
 					<input id="buscarEmpleatId" type="number" name="id">
-					<button type="submit">Trobar empleat por Id</button>
+					<button type="submit">Trobar empleat per Id</button>
 			</form>
 			
 			<div class="col-md-10">
-				<h2 th:case="null">No record found !!</h2>
+				<h2 th:case="null">No hi ha registres</h2>
 				<div th:case="*">
 					<table class="table table-striped table-responsive-md">
 						<thead>

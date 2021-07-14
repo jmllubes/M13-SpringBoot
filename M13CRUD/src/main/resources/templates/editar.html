@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Crear empleat</title>
+	<title>Editar empleat</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
@@ -14,7 +14,7 @@
 	<!-- Navigation -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 			<div class="container">
-				<a class="navbar-brand" href="/"> Crear Empleats</a>
+				<a class="navbar-brand" href="/"> Editar Empleats</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
 					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -37,12 +37,18 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="col-md-10">
-					<form th:action="@{/insertarEmpleat}" th:object="${empleat}" method="post">
+					<form th:action="@{/modificaEmpleat}" th:object="${empleat}" method="post">
 						
 						<div class="row">
+						
+						<div class="form-group col-md-8">
+								<label for="name"class="col-form-label" value="*{nom}"></label>
+								
+							</div>
+							
 							<div class="form-group col-md-8">
 								<label for="name"class="col-form-label">Nom</label>
-								<input type="text" th:field="*{nom}" class="form-control"
+								<input type="text" th:field="*{nom}" value="*{nom}" class="form-control"
 									id="nom" placeholder="Nom" />
 							</div>
 

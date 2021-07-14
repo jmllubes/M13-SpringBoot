@@ -7,13 +7,22 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.interfaces.ICrud;
 import com.example.demo.model.Empleat;
+import com.example.demo.model.Ofici;
 
 @Service
 public class CrudService implements ICrud {
 
 	private List<Empleat> llistaEmp = new ArrayList<>();
 
-	public void inserta(Empleat empleat) {
+	public void inserta(String nom, String ofici) {
+		int n=1;
+		for (Empleat e : llistaEmp) {
+				if(e.getId()==n 	) {
+					n++;
+				}
+				
+		}
+		Empleat empleat = new Empleat(n,nom,Ofici.valueOf(ofici));
 		llistaEmp.add(empleat);
 		System.out.println("Empleat registrat correctament: " + empleat.toString());
 
@@ -25,6 +34,7 @@ public class CrudService implements ICrud {
 			if (empleat.getId() == id) {
 				llistaEmp.remove(empleat);
 				System.out.println("Empleat borrat correctament " + empleat.toString());
+			break;
 			}
 		}
 
@@ -37,6 +47,7 @@ public class CrudService implements ICrud {
 				llistaEmp.remove(empleat2);
 				llistaEmp.add(empleat);
 				System.out.println("Empleat actualitzat correctament " + empleat.toString());
+			break;
 			}
 		}
 
@@ -83,6 +94,10 @@ public class CrudService implements ICrud {
 	public List<Empleat> getEmpleats() {
 		return llistaEmp;
 	}
+
+
+
+
 
 
 
