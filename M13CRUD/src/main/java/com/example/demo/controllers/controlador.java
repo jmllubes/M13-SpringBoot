@@ -29,7 +29,7 @@ public class controlador {
 		
 		List<Empleat> llistaEmpleats = empleatService.getEmpleats();
 		
-		model.addAttribute("Empleats", llistaEmpleats);
+		model.addAttribute("empleats", llistaEmpleats);
 		
 		return "index";
 	}
@@ -93,7 +93,7 @@ public class controlador {
 		
 		Empleat empleat = new Empleat(1,nom,Ofici.valueOf(ofici));
 		System.out.println(empleat);
-		empleatService.modificar(empleat);
+		empleatService.inserta(empleat);
 		
 		return "redirect:/";
 	}
