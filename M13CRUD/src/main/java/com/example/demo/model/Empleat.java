@@ -8,6 +8,9 @@ public class Empleat {
 	private String nom;
 	private Ofici ofici;
 
+	
+	public Empleat() {}
+	
 	public Empleat(int id, String nom, Ofici ofici) {
 		super();
 		this.id = id;
@@ -38,5 +41,12 @@ public class Empleat {
 	public void setOfici(Ofici ofici) {
 		this.ofici = ofici;
 	}
+
+	@Override
+	public String toString() {
+		return "Empleat [id=" + id + ", nom=" + nom + ", ofici=" + ofici + "]";
+	}
+	
+	
 
 }

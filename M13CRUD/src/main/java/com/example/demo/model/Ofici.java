@@ -27,5 +27,7 @@ public enum Ofici {
 	public void setSalari(double salari) {
 		this.salari = salari;
 	}
+	
+	
 
 }
